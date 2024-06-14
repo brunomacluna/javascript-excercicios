@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+<style>
+    body {
+        padding-left: 500px;
+        padding-right: 500px;
+        padding-bottom: 50px;
+        text-align: center;
+        background-color: darkgrey;
+        }
+    footer {
+    font-size: larger;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font: bolder;
+    }    
+</style>
+<body>
+    <h1>O objeto Elemt</h1>
+    <h2>O método appendChild()</h2>
+
+    <ul id="minhaLista">
+        <li>Café</li>
+        <li>Chá</li>
+    </ul>
+
+    <p>Clique em "Anexar" para acrescentar um item ao final da lista:</p>
+    <br>
+    <input type="text" id="itemInput" placeholder="Acresente um item:">
+    
+    <button id="anexarBotao">Anexar</button>
+    <br>
+    <label>
+        <input type="radio" name="cor" value="red"> Vermelho
+    </label>
+    
+    <label>
+        <input type="radio" name="cor" value="blue"> Azul
+    </label>
+    
+    <label>
+        <input type="radio" name="cor" value="green" checked> Verde
+    </label>
+    <br>
+    <br>
+    <br>
+    <h3><a href="index.html">Home</a></h3>
+
+    <footer>Padrões Web / Professor: Márcio Araya / Alunos: Adamans Misac, Bruno Machado, Wemerson dos Santos, Maira Lima</footer>
+
+    <script>
+        function adicionarItem() {
+        const lista = document.getElementById("minhaLista");
+        const itemTexto = document.getElementById("itemInput").value;
+        const novoItem = document.createElement("li");
+        novoItem.appendChild(document.createTextNode(itemTexto));
+        const corSelecionada = document.querySelector('input[name="cor"]:checked').value;
+        novoItem.style.color = corSelecionada;
+        lista.appendChild(novoItem);
+    }
+        const anexarBotao = document.getElementById("anexarBotao");
+        anexarBotao.addEventListener("click", adicionarItem)
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+</head>
+<style>
+    body {
+        padding-left: 500px;
+        padding-right: 500px;
+        text-align: center;
+        background-color: darkgrey;
+    }
+    h1 {
+        background-color: dimgray;
+        color: aliceblue;
+    }
+    h2 {
+        background-color: lightgray;
+        color: dimgray;
+    }
+    table {
+        margin: auto;
+    }
+    
+    .resultado-imc {
+        font-weight: bold;
+    }
+    .normal {
+        color: green;
+    }
+    .alerta {
+        color: orange;
+    }
+    .perigo {
+        color: red;
+    }
+    footer {
+    font-size: larger;
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font: bolder;
+    }    
+    .titulo {
+        background-color: dimgray;
+        color: aliceblue;
+    }
+    .linha {
+        background-color: lightgray;
+    }
+     
+</style>
+<body>
+    <h1>Índice de massa corporal</h1>
+    <p>O índice de massa corporal (IMC) é uma medida internacional usada para calcular se uma pessoa está no peso ideal. Desenvolvido pelo polímata Lambert Quételet no fim do século XIX, trata-se de um método fácil e rápido para a avaliação do nível de gordura de cada pessoa, sendo, por isso, um preditor internacional de obesidade adotado pela Organização Mundial da Saúde (OMS).</p>
+    <hr>
+    <h2>Como calcular</h2>
+    <p>O IMC é determinado pela divisão da massa do indivíduo pelo quadrado de sua altura, em que a massa está em quilogramas e a altura em metros.</p>
+    <br>
+    <p>IMC = peso / altura²</p>
+    <br>
+    <hr>
+
+    <h2>Exemplo de IMC</h2>
+    <p>Para uma pessoa com 90 quilogramas de massa e 1,75 metros de altura, teremos</p>
+    <br>
+    <p>IMC = 90 / 1,75² = 29,38 kg/m²</p>
+    <br>
+    <hr>
+    <h2>Tabela de IMC</h2>
+    
+    <p>Você pode utilizar a tabela abaixo para consultar o seu índice de massa corporal.</p>
+
+    <table border="1">
+        <tr class="titulo"><td>Resultado</td><td>Situação</td></tr>
+        <tr class="linha"><td>Abaixo de 17</td><td>Muito abaixo do peso</td></tr>
+        <tr class="linha"><td>Entre 17 e 18,49</td><td>Abaixo do peso</td></tr>
+        <tr class="linha"><td>Entre 18,50 e 24,99</td><td>Peso normal</td></tr>
+        <tr class="linha"><td>Entre 25 e 29,99</td><td>Acima do peso</td></tr>
+        <tr class="linha"><td>Entre 30 e 34,99</td><td>Obesidade I</td></tr>
+        <tr class="linha"><td>Entre 35 e 39,99</td><td>Obesidade II (severa)</td></tr>
+        <tr class="linha"><td>Acima de 40</td><td>Obesidade III (mórbida)</td></tr>
+    </table>
+    <br>
+    <hr>
+    <h1>Calcule aqui seu IMC</h1>
+    <br>
+    <form>
+        <input type="number" name="peso" id="peso" placeholder="Digite seu peso:">
+        <br>
+        <input type="number" name="altura" id="altura" step="0.01" placeholder="Digite sua altura: ">
+        <br>
+        <button type="submit" onclick="calcularIMC()">Calcular</button>
+    </form>
+    <p>Resultado: <span id="resultado"></span></p>
+    <p>Situação: <span id="situacao" class="resultado-imc"></span></p>
+    <br>
+    <h3><a href="index.html">Home</a></h3>
+
+    <footer>Padrões Web / Professor: Márcio Araya / Alunos: Adamans Misac, Bruno Machado, Wemerson dos Santos, Maira Lima</footer>
+
+    <script>
+function calcularIMC() {
+    let peso = parseFloat(document.getElementById("peso").value);
+    let altura = parseFloat(document.getElementById("altura").value);
+    console.log("peso" + peso);
+    console.log("altura" + altura);
+    let IMC = peso / (altura * altura);
+    console.log("resultado" + IMC);
+    document.getElementById("resultado").innerHTML = IMC.toFixed(2);
+
+    event.preventDefault();
+
+    let situacao = document.getElementById("situacao");
+    situacao.classList.remove("normal", "alerta", "perigo");
+    if (IMC <= 16.99) {
+        situacao.textContent = "Muito abaixo do peso";
+        situacao.classList.add("perigo");
+    } else if (IMC <= 18.49) {
+        situacao.textContent = "Abaixo do peso";
+        situacao.classList.add("alerta");
+    } else if (IMC <= 24.99) {
+        situacao.textContent = "Peso Normal";
+        situacao.classList.add("normal");
+    } else if (IMC <= 29.99) {
+        situacao.textContent = "Acima do peso";
+        situacao.classList.add("alerta");
+    } else if (IMC <= 34.99) {
+        situacao.textContent = "Obessidade I";
+        situacao.classList.add("perigo");
+    } else if (IMC <= 39.99) {
+        situacao.textContent = "Obessidade II (severa)";
+        situacao.classList.add("perigo");
+    } else if (IMC >= 40.00) {
+        situacao.textContent = "Obessidade Morbida III (mórbida)";
+        situacao.classList.add("perigo");
+    }
+}  
+    </script>
+
+
+</body>
+</html>

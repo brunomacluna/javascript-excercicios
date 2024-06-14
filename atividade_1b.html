@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1b</title>
+</head>
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: darkgrey;
+}    
+h1#titulo {
+    text-align: center;
+    background-color: dimgray;
+    color: aliceblue;
+}
+footer {
+    font-size: larger;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font: bolder;
+    }
+</style>
+<script>
+    function calcular(event) {
+        event.preventDefault();
+        let nota1 = parseFloat(document.getElementById("nota1").value);
+        let nota2 = parseFloat(document.getElementById("nota2").value);
+        console.log("primeira nota: " + nota1);
+        console.log("segunda nota: " + nota2);
+        let media = (nota1 + nota2) / 2;
+        console.log("Média: " + media);
+        document.getElementById("resultadoMedia").innerHTML = media;
+
+        let situacao = document.getElementById("situacao");
+        if (media >= 6) {
+            situacao.textContent = "APROVADO";
+        } else {
+            situacao.textContent = "REPROVADO";
+        }
+        if (media >= 6) {
+            document.getElementById("p2").style.color = "blue";
+        } else {
+            document.getElementById("p2").style.color = "red";
+        }
+    }
+</script>
+<body>
+    <h1 id="titulo">Atividade 1b</h1>
+    <br>
+    <br>
+    <h2 id="boletim">Boletim</h2>
+    <br>
+        <form id="calculadora" onsubmit="calcular(event)">
+        <input type="text" name="nota1" id="nota1" placeholder="Digite a primeira nota: "> 
+        <br>
+        <br>
+        <input type="text" name="nota2" id="nota2" placeholder="Digite a segunda nota: "> 
+        <br>
+        <br>
+        <input type="submit" value="Calcular">
+    </form>
+    <p>Média: <span id="resultadoMedia"></span></p>
+    <p id="p2"><span id="situacao"></span></p>
+    <br>
+    <br>
+    <br>
+    <h3><a href="index.html">Home</a></h3>
+    <hr>
+    <footer>Padrões Web / Professor: Márcio Araya / Alunos: Adamans Misac, Bruno Machado, Wemerson dos Santos, Maira Lima</footer>
+    
+</body>
+</html>
